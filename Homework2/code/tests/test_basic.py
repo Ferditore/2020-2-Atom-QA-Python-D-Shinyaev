@@ -18,20 +18,17 @@ class Test(BaseCase):
         self.auth_page.login(login, password)
         return CompPage(self.driver)
 
-    # @pytest.mark.skip(reason='no need')
     def test_pos_auth(self):
         self.driver.get(self.auth_page.URL)
         self.auth_page.login(login, password)
         self.auth_page.find(self.auth_page.locators.LINK_POS_AUTH, timeout=10)
         assert 'Кампании' in self.driver.page_source
 
-    # @pytest.mark.skip(reason='no need')
     def test_neg_auth(self):
         self.driver.get(self.auth_page.URL)
         self.auth_page.login('hjkhk@mail.ru', 'kjhkj')
         assert 'Invalid login or password' in self.driver.page_source
 
-    # @pytest.mark.skip(reason='no need')
     def test_create_comp(self, authorization):
         name = ''.join(choice(ascii_letters) for i in range(60))
         url = 'github.com'
@@ -40,7 +37,6 @@ class Test(BaseCase):
         auto.find(MakeCompanyLocators.TABLE_COMPANY)
         assert name in self.driver.page_source
 
-    # @pytest.mark.skip(reason='no need')
     def test_create_segment(self, authorization):
         name = ''.join(choice(ascii_letters) for i in range(60))
         auto = authorization.open_segments()
@@ -48,7 +44,6 @@ class Test(BaseCase):
         auto.find(MakeSegmentLocators.TABLE_SEGMENT)
         assert name in self.driver.page_source
 
-    # @pytest.mark.skip(reason='no need')
     def test_delete_segment(self, authorization):
         name = ''.join(choice(ascii_letters) for i in range(60))
         auto = authorization.open_segments()

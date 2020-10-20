@@ -10,7 +10,7 @@ from ui.pages.segment_page import SegPage
 
 class CompPage(BasePage):
     locators = MakeCompanyLocators()
-    IMAGE_PATH = Path.cwd()/'picture'/'image.png'
+    IMAGE_PATH = Path(__file__).parent.parent.parent/'picture'/'image.png'
 
     def make_company(self, url, name):
         try:
